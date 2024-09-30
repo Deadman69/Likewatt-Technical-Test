@@ -1,0 +1,22 @@
+version: '3'
+services:
+  api:
+    build:
+      context: ../  # Set the root of the project as the root of the git repository
+      dockerfile: docker/Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+
+  db:
+    image: mysql:9.0.1 # Latest MySQL image on 30/09/2024
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: likewatt_test_technique
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql-data:/var/lib/mysql
