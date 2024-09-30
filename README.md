@@ -55,3 +55,11 @@ Then, I created a `Project` module with its corresponding routes and DTOs.
 I have added comments to the code that I wrote.
 
 In this use case, I decided to implement integrity checks in the controller (to check if a project exists before updating or deleting) since I only have a few routes and models.
+
+
+# Possible errors
+
+You might get an error while starting the `api` container `': No such file or directory't execute 'bash`.  
+This is because you have CRLF in the `/docker/wait-for-it.sh` script, you must convert it to LF (you can use Visual Code for this).
+
+Then rebuild the app using `docker-compose up -d --build`
